@@ -52,13 +52,13 @@ namespace finalSubmission.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("67c0f839-8408-4a6a-8cdd-5571bbe36743"),
+                            Id = new Guid("1d13e55c-cfc1-4825-8670-9629e055fdba"),
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = new Guid("1a317753-add0-4752-bc4a-868fbf6b223e"),
+                            Id = new Guid("23f6871b-e0da-4370-97cc-f0bc41106a1d"),
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -138,29 +138,29 @@ namespace finalSubmission.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d2d28585-833d-4a56-b23a-6999840a252a"),
+                            Id = new Guid("ef35d21f-4ebd-4bf4-b5e0-2a3d803c626f"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c52408d0-3d84-42d1-b337-3afcbb47af5b",
+                            ConcurrencyStamp = "78cdc0a4-3c1b-4e7a-9106-694e6b4686c9",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEO9zpV2NhhhvjmK/JUmdf3V+lyzJF+fDh9Xw4hFT+IGxJ4jZGqZ2kyCNSliENok0Rw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEA2bmErMkDHFFvcXEssVAbZIdeSv5xW3YLGh5riH//Uqd/H06zGGj9Sgx8bSMFIgzg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9cbdb3e1-13ff-4290-888c-b63b8bf02fce",
+                            SecurityStamp = "f771f1a1-72e2-41b1-9cb5-0fb2c03af3e7",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         },
                         new
                         {
-                            Id = new Guid("9c147e0e-0a64-47ed-82e5-2ddd4e1e28c2"),
+                            Id = new Guid("0e51b28f-7748-47a3-acf1-f4980e1f2ea6"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "42e1c7a5-55f0-4283-b0f5-b9576c3fb92f",
+                            ConcurrencyStamp = "e627fcf7-1a4c-45cc-aaa5-52e0d3280179",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedUserName = "USER",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAP2m06zgXPAmvCiuh0Mu3i5JKclJP6PeOWiK454qt8Izd+A0u6lWjPHpsplZLw/UQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMrKErfp/oowNrDBKcuOe1e0jw16mQgEb5PCx8yjM9fdIqpXu11TG52W2ipPM+ZayQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9dfabdf8-b446-4471-9e32-04a5b0ec9109",
+                            SecurityStamp = "d2f7a478-61ef-4b08-9710-7f6c6c33d124",
                             TwoFactorEnabled = false,
                             UserName = "user"
                         });
@@ -252,13 +252,13 @@ namespace finalSubmission.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = new Guid("d2d28585-833d-4a56-b23a-6999840a252a"),
-                            RoleId = new Guid("67c0f839-8408-4a6a-8cdd-5571bbe36743")
+                            UserId = new Guid("ef35d21f-4ebd-4bf4-b5e0-2a3d803c626f"),
+                            RoleId = new Guid("1d13e55c-cfc1-4825-8670-9629e055fdba")
                         },
                         new
                         {
-                            UserId = new Guid("9c147e0e-0a64-47ed-82e5-2ddd4e1e28c2"),
-                            RoleId = new Guid("1a317753-add0-4752-bc4a-868fbf6b223e")
+                            UserId = new Guid("0e51b28f-7748-47a3-acf1-f4980e1f2ea6"),
+                            RoleId = new Guid("23f6871b-e0da-4370-97cc-f0bc41106a1d")
                         });
                 });
 
@@ -311,17 +311,17 @@ namespace finalSubmission.Infrastructure.Migrations
                         {
                             Title = "Test",
                             Description = "Test Description",
-                            DueDate = new DateTime(2024, 12, 16, 18, 35, 49, 188, DateTimeKind.Local).AddTicks(2647),
+                            DueDate = new DateTime(2025, 1, 2, 19, 18, 42, 930, DateTimeKind.Local).AddTicks(8161),
                             Status = "Completed",
-                            UserId = new Guid("9c147e0e-0a64-47ed-82e5-2ddd4e1e28c2")
+                            UserId = new Guid("0e51b28f-7748-47a3-acf1-f4980e1f2ea6")
                         },
                         new
                         {
                             Title = "Test2",
                             Description = "Test 2",
-                            DueDate = new DateTime(2024, 12, 21, 18, 35, 49, 188, DateTimeKind.Local).AddTicks(2681),
+                            DueDate = new DateTime(2025, 1, 7, 19, 18, 42, 930, DateTimeKind.Local).AddTicks(8206),
                             Status = "Pending",
-                            UserId = new Guid("9c147e0e-0a64-47ed-82e5-2ddd4e1e28c2")
+                            UserId = new Guid("0e51b28f-7748-47a3-acf1-f4980e1f2ea6")
                         });
                 });
 
@@ -341,12 +341,12 @@ namespace finalSubmission.Infrastructure.Migrations
                         new
                         {
                             UserName = "admin",
-                            UserId = new Guid("d2d28585-833d-4a56-b23a-6999840a252a")
+                            UserId = new Guid("ef35d21f-4ebd-4bf4-b5e0-2a3d803c626f")
                         },
                         new
                         {
                             UserName = "user",
-                            UserId = new Guid("9c147e0e-0a64-47ed-82e5-2ddd4e1e28c2")
+                            UserId = new Guid("0e51b28f-7748-47a3-acf1-f4980e1f2ea6")
                         });
                 });
 

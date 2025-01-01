@@ -149,5 +149,37 @@ namespace finalSubmission.Infrastructure.Repositories
         {
             return await _context.AllTasksTable.Where(temp => temp.UserId == userId).ToListAsync();
         }
+
+        public async Task<List<MyTask>?> getTasksByDuedateAndStatus(Guid? userId,DateTime? dateTime, CustomTaskStatus? status, string? title)
+        {
+            IQueryable<MyTask> query = _context.AllTasksTable.AsQueryable();
+
+
+            if (userId.HasValue)
+            {
+                query = query.Where(task => task.UserId == userId);
+            }
+
+            if (title != null)
+            {
+                query = query.Where(task => task.Title == title);
+            }
+
+            // Apply the filters only if the values are provided (i.e., not null)
+            if (dateTime.HasValue)
+            {
+                query = query.Where(task => task.DueDate <= dateTime.Value);
+            }
+
+            if (status.HasValue)
+            {
+                query = query.Where(task => task.Status == status.Value);
+            }
+
+            // Execute the query asynchronously and return the results as a list
+            List<MyTask>? result = await query.ToListAsync();
+
+            return result;
+        }
     }
 }
