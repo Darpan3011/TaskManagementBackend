@@ -282,9 +282,9 @@ namespace finalSubmissionDotNet.Controllers
         /// <param name="taskTitle">Task of the Title for changing the Title</param>
         /// <param name="newStatus">New Status</param>
         /// <returns></returns>
-        [Authorize(Roles = "users")]
+        [Authorize(Roles = "User")]
         [HttpPut("tasks/{taskTitle}/status")]
-        public async Task<IActionResult> UpdateTaskStatus(string taskTitle, CustomTaskStatus newStatus)
+        public async Task<IActionResult> UpdateTaskStatus(string taskTitle,[FromQuery] CustomTaskStatus newStatus)
         {
             try
             {
