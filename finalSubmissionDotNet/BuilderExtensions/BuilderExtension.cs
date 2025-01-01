@@ -111,6 +111,7 @@ namespace finalSubmissionDotNet.BuilderExtensions
             services.AddScoped<IGetByUserID, GetByUserID>();
             services.AddScoped<IGetFilteredTasksByUser,  GetFilteredTasksByUser>();
             services.AddScoped<IUserExistsOrNot, UserExistsOrNot>();
+            services.AddScoped<IGetTasksByDueDateAndStatus, GetTasksByDueDateAndStatus>();
             //services.AddScoped<IUserAndTaskSeeder, UserAndTaskSeeder>();
 
             // for app.UseHttpLogging();
