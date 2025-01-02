@@ -225,7 +225,7 @@ namespace finalSubmissionDotNet.Controllers
 
             if (tasks == null || !tasks.Any())
             {
-                return NotFound("No tasks found matching the criteria.");
+                return Ok("No tasks found matching the criteria.");
             }
 
             return Ok(tasks);
