@@ -1,4 +1,5 @@
 ﻿using finalSubmission.Core.Domain.Entities;
+using finalSubmission.Core.DTO;
 using finalSubmission.Core.Enums;
 
 namespace finalSubmission.Core.Domain.RepositoryContracts
@@ -17,5 +18,6 @@ namespace finalSubmission.Core.Domain.RepositoryContracts
         Task<List<MyTask>?> GetAllTasksByUserID(Guid userId);
         Task<List<MyTask>?> getTasksByDuedateAndStatus(Guid? userId, DateTime? dateTime, CustomTaskStatus? status, string? title);
 
+        Task<List<MyTaskWithUsername>?> GetAllTasksIncludingUsername();
     }
 }

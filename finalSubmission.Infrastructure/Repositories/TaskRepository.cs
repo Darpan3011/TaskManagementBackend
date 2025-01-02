@@ -1,5 +1,6 @@
 ﻿using finalSubmission.Core.Domain.Entities;
 using finalSubmission.Core.Domain.RepositoryContracts;
+using finalSubmission.Core.DTO;
 using finalSubmission.Core.Enums;
 using finalSubmission.Infrastructure.DbContexts;
 using Microsoft.EntityFrameworkCore;
@@ -150,7 +151,7 @@ namespace finalSubmission.Infrastructure.Repositories
             return await _context.AllTasksTable.Where(temp => temp.UserId == userId).ToListAsync();
         }
 
-        public async Task<List<MyTask>?> getTasksByDuedateAndStatus(Guid? userId,DateTime? dateTime, CustomTaskStatus? status, string? title)
+        public async Task<List<MyTask>?> getTasksByDuedateAndStatus(Guid? userId, DateTime? dateTime, CustomTaskStatus? status, string? title)
         {
             IQueryable<MyTask> query = _context.AllTasksTable.AsQueryable();
 
@@ -180,6 +181,20 @@ namespace finalSubmission.Infrastructure.Repositories
             List<MyTask>? result = await query.ToListAsync();
 
             return result;
+        }
+
+        public async Task<List<MyTaskWithUsername>?> GetAllTasksIncludingUsername()
+        {
+            return await (from task in _context.AllTasksTable
+                          join user in _context.Users on task.UserId equals user.Id
+                          select new MyTaskWithUsername
+                          {
+                              Title = task.Title,
+                              Description = task.Description,
+                              DueDate = task.DueDate,
+                              Status = task.Status,
+                              UserName = user.UserName
+                          }).ToListAsync();
         }
     }
 }

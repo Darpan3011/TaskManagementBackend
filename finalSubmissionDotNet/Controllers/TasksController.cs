@@ -1,6 +1,7 @@
 ﻿using System.Security.Claims;
 using finalSubmission.Core.Domain.Entities;
 using finalSubmission.Core.Domain.RepositoryContracts;
+using finalSubmission.Core.DTO;
 using finalSubmission.Core.Enums;
 using finalSubmission.Core.ServiceContracts.ITaskService;
 using finalSubmission.Core.ServiceContracts.IUserService;
@@ -315,6 +316,29 @@ namespace finalSubmissionDotNet.Controllers
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        /// <summary>
+        /// Retrieves all tasks from the system, including the username of the user to whom the task is assigned.
+        /// </summary>
+        /// <returns></returns>
+        [Authorize(Roles= "Admin")]
+        [HttpGet("all-tasks")]
+        public async Task<IActionResult> GetAllTasksIncludingUsername()
+        {
+            try
+            {
+                List<MyTaskWithUsername>? myTasks = await _taskRepository.GetAllTasksIncludingUsername();
+                if (myTasks == null || myTasks.Count == 0)
+                {
+                    return NotFound(new { message = "No tasks found." });
+                }
+                return Ok(myTasks);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "An error occurred while retrieving tasks.", details = ex.Message });
             }
         }
 
