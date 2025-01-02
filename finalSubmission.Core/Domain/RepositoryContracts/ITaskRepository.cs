@@ -16,8 +16,7 @@ namespace finalSubmission.Core.Domain.RepositoryContracts
         Task<MyTask?> GetTaskByTitle(string Title);
         Task<MyTask> EditATask(MyTask myTask);
         Task<List<MyTask>?> GetAllTasksByUserID(Guid userId);
-        Task<List<MyTask>?> getTasksByDuedateAndStatus(Guid? userId, DateTime? dateTime, CustomTaskStatus? status, string? title);
-
+        Task<List<MyTaskWithUsername>?> getTasksByDuedateAndStatus(Guid? userId, DateTime? dateTime, CustomTaskStatus? status, string? title);
         Task<List<MyTaskWithUsername>?> GetAllTasksIncludingUsername();
     }
 }

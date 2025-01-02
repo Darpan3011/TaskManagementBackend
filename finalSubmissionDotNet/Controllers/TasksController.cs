@@ -202,11 +202,11 @@ namespace finalSubmissionDotNet.Controllers
         [HttpGet("filter")]
         public async Task<IActionResult> GetTasksByDueDateAndStatusAndTitle([FromQuery]string? title,[FromQuery]DateTime? dueDate, [FromQuery]CustomTaskStatus? status)
         {
-            if (title == null && !dueDate.HasValue && !status.HasValue)
-            {
-                return BadRequest("At least one filter must be provided.");
-            }
-            List<MyTask>? tasks = null;
+            //if (title == null && !dueDate.HasValue && !status.HasValue)
+            //{
+            //    return BadRequest("At least one filter must be provided.");
+            //}
+            List<MyTaskWithUsername>? tasks = null;
 
             if (User.IsInRole("Admin"))
             {

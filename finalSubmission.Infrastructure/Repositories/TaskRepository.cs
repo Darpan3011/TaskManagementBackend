@@ -151,22 +151,26 @@ namespace finalSubmission.Infrastructure.Repositories
             return await _context.AllTasksTable.Where(temp => temp.UserId == userId).ToListAsync();
         }
 
-        public async Task<List<MyTask>?> getTasksByDuedateAndStatus(Guid? userId, DateTime? dateTime, CustomTaskStatus? status, string? title)
+        public async Task<List<MyTaskWithUsername>?> getTasksByDuedateAndStatus(
+    Guid? userId,
+    DateTime? dateTime,
+    CustomTaskStatus? status,
+    string? title)
         {
+            // Start with the base query
             IQueryable<MyTask> query = _context.AllTasksTable.AsQueryable();
 
-
+            // Apply filters
             if (userId.HasValue)
             {
-                query = query.Where(task => task.UserId == userId);
+                query = query.Where(task => task.UserId == userId.Value);
             }
 
-            if (title != null)
+            if (!string.IsNullOrEmpty(title))
             {
-                query = query.Where(task => task.Title == title);
+                query = query.Where(task => task.Title.Contains(title));
             }
 
-            // Apply the filters only if the values are provided (i.e., not null)
             if (dateTime.HasValue)
             {
                 query = query.Where(task => task.DueDate <= dateTime.Value);
@@ -177,11 +181,21 @@ namespace finalSubmission.Infrastructure.Repositories
                 query = query.Where(task => task.Status == status.Value);
             }
 
-            // Execute the query asynchronously and return the results as a list
-            List<MyTask>? result = await query.ToListAsync();
+            // Join with UsersTable to get UserName
+            List<MyTaskWithUsername>? result = await (from task in query
+                                join user in _context.AllUsersTable on task.UserId equals user.UserId
+                                select new MyTaskWithUsername
+                                {
+                                    Title = task.Title,
+                                    Description = task.Description,
+                                    DueDate = task.DueDate,
+                                    Status = task.Status,
+                                    UserName = user.UserName
+                                }).ToListAsync();
 
             return result;
         }
+
 
         public async Task<List<MyTaskWithUsername>?> GetAllTasksIncludingUsername()
         {
@@ -196,5 +210,7 @@ namespace finalSubmission.Infrastructure.Repositories
                               UserName = user.UserName
                           }).ToListAsync();
         }
+
+       
     }
 }

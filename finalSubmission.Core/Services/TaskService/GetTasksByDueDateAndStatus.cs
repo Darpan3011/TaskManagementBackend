@@ -1,5 +1,6 @@
 ﻿using finalSubmission.Core.Domain.Entities;
 using finalSubmission.Core.Domain.RepositoryContracts;
+using finalSubmission.Core.DTO;
 using finalSubmission.Core.Enums;
 using finalSubmission.Core.ServiceContracts.ITaskService;
 
@@ -13,9 +14,9 @@ namespace finalSubmission.Core.Services.TaskService
         {
             _taskRepository = taskRepository;
         }
-        public async Task<List<MyTask>?> GetMyTasksfromDueDateandStatus(Guid? userId, DateTime? dateTime, CustomTaskStatus? customTaskStatus, string? title)
+        public async Task<List<MyTaskWithUsername>?> GetMyTasksfromDueDateandStatus(Guid? userId, DateTime? dateTime, CustomTaskStatus? customTaskStatus, string? title)
         {
-            List<MyTask>? myTasks = await _taskRepository.getTasksByDuedateAndStatus(userId, dateTime, customTaskStatus, title);
+            List<MyTaskWithUsername>? myTasks = await _taskRepository.getTasksByDuedateAndStatus(userId, dateTime, customTaskStatus, title);
 
             return myTasks;
         }
