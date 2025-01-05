@@ -1,3 +1,7 @@
+# Task Management UI Repository
+This repository contains the backend for Task Management. You can access the frontend UI repository here:
+[Task Management UI Repository](https://github.com/Darpan3011/TaskManagementUI.git)
+
 ## Table of Contents
 - [Project Overview](#project-overview)
 - [Project Structure](#project-structure)
