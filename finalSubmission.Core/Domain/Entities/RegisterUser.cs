@@ -5,6 +5,7 @@ namespace finalSubmission.Core.Domain.Entities
     public class RegisterUser
     {
         [Required(ErrorMessage = "UserName is required.")]
+        [RegularExpression("^[a-zA-Z0-9]+$", ErrorMessage = "UserName can only contain letters and numbers.")]
         public required string UserName { get; set; }
 
         [Required(ErrorMessage = "Password is required.")]

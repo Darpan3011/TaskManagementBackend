@@ -5,15 +5,16 @@ using finalSubmission.Core.DTO;
 using finalSubmission.Core.Enums;
 using finalSubmission.Core.ServiceContracts.ITaskService;
 using finalSubmission.Core.ServiceContracts.IUserService;
-using finalSubmission.Core.Services.TaskService;
 using finalSubmissionDotNet.Filters;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace finalSubmissionDotNet.Controllers
 {
+    /// <summary>
+    /// Controller for Task related APIs
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class TasksController : ControllerBase

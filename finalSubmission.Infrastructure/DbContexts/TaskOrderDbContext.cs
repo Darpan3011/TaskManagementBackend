@@ -30,9 +30,9 @@ namespace finalSubmission.Infrastructure.DbContexts
             Guid roleid2 = Guid.NewGuid();
 
             builder.Entity<ApplicationRole>().HasData(
-            new ApplicationRole { Name = "Admin", NormalizedName="ADMIN", Id=roleid },
-            new ApplicationRole { Name = "User", NormalizedName="USER", Id=roleid2 }
-        );
+                new ApplicationRole { Name = "Admin", NormalizedName = "ADMIN", Id = roleid },
+                new ApplicationRole { Name = "User", NormalizedName = "USER", Id = roleid2 }
+            );
 
             Guid id = Guid.NewGuid();
             Guid id2 = Guid.NewGuid();
@@ -75,7 +75,8 @@ namespace finalSubmission.Infrastructure.DbContexts
                     UserId = id2,
                     DueDate = DateTime.Now.AddDays(10),
                     Status = CustomTaskStatus.Pending
-                });
+                }
+            );
 
             builder.Entity<User>().HasData(
                 new User
@@ -88,7 +89,7 @@ namespace finalSubmission.Infrastructure.DbContexts
                     UserName = "user",
                     UserId = id2
                 }
-                );
+             );
 
             // role table
 
@@ -103,8 +104,7 @@ namespace finalSubmission.Infrastructure.DbContexts
                     UserId = id2,
                     RoleId = roleid2
                 }
-
-                );
+            );
 
         }
 

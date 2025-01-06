@@ -64,15 +64,19 @@ namespace finalSubmissionDotNet.Controllers
                 Id = userid
             };
 
-            User user1 = new User() { UserName = model.UserName, UserId = userid };
-
-            await _createUser.CreateAnUser(user1);
+            
 
             IdentityResult result = await _userManager.CreateAsync(user, model.Password);
 
             if (!result.Succeeded)
             {
                 return BadRequest(result.Errors);
+            }
+
+            if (result.Succeeded)
+            {
+                User user1 = new User() { UserName = model.UserName, UserId = userid };
+                await _createUser.CreateAnUser(user1);
             }
 
             // Assign the role as per selected option (just for testing purpose)
