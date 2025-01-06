@@ -129,10 +129,9 @@ namespace finalSubmissionDotNet.Controllers
 
             return Ok(new
             {
-                // generate token
                 token = new JwtSecurityTokenHandler().WriteToken(token),
                 expiration = token.ValidTo,
-                refreshToken = refreshToken
+                refreshToken
             });
         }
 
@@ -169,9 +168,17 @@ namespace finalSubmissionDotNet.Controllers
                 signingCredentials: creds
             );
 
+            string newRefreshToken = GenerateRefresh.GenerateRefreshToken();
+            user.RefreshToken = newRefreshToken;
+            user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
+
+            await _userManager.UpdateAsync(user);
+
+
             return Ok(new
             {
                 token = new JwtSecurityTokenHandler().WriteToken(token),
+                refreshToken = newRefreshToken,
                 expiration = token.ValidTo
             });
         }

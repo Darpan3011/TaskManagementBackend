@@ -220,12 +220,12 @@ namespace finalSubmissionDotNet.Controllers
             }
             else
             {
-                return Unauthorized("You do not have permission to access this resource.");
+                return Unauthorized(new {message = "You do not have permission to access this resource."});
             }
 
             if (tasks == null || !tasks.Any())
             {
-                return Ok("No tasks found matching the criteria.");
+                return NotFound(new {message = "No tasks found matching the criteria."});
             }
 
             return Ok(tasks);

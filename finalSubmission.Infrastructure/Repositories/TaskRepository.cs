@@ -183,34 +183,32 @@ namespace finalSubmission.Infrastructure.Repositories
 
             // Join with UsersTable to get UserName
             List<MyTaskWithUsername>? result = await (from task in query
-                                join user in _context.AllUsersTable on task.UserId equals user.UserId
-                                select new MyTaskWithUsername
-                                {
-                                    Title = task.Title,
-                                    Description = task.Description,
-                                    DueDate = task.DueDate,
-                                    Status = task.Status,
-                                    UserName = user.UserName
-                                }).ToListAsync();
+                join user in _context.AllUsersTable on task.UserId equals user.UserId
+                select new MyTaskWithUsername
+                {
+                    Title = task.Title,
+                    Description = task.Description,
+                    DueDate = task.DueDate,
+                    Status = task.Status,
+                    UserName = user.UserName
+                }).ToListAsync();
 
             return result;
         }
 
-
         public async Task<List<MyTaskWithUsername>?> GetAllTasksIncludingUsername()
         {
-            return await (from task in _context.AllTasksTable
-                          join user in _context.Users on task.UserId equals user.Id
-                          select new MyTaskWithUsername
-                          {
-                              Title = task.Title,
-                              Description = task.Description,
-                              DueDate = task.DueDate,
-                              Status = task.Status,
-                              UserName = user.UserName
-                          }).ToListAsync();
+            return await (
+                from task in _context.AllTasksTable
+                join user in _context.AllUsersTable on task.UserId equals user.UserId
+                select new MyTaskWithUsername
+                {
+                    Title = task.Title,
+                    Description = task.Description,
+                    DueDate = task.DueDate,
+                    Status = task.Status,
+                    UserName = user.UserName
+                }).ToListAsync();
         }
-
-       
     }
 }
