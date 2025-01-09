@@ -127,7 +127,7 @@ namespace finalSubmissionDotNet.Controllers
 
             string refreshToken = GenerateRefresh.GenerateRefreshToken();
             user.RefreshToken = refreshToken;
-            user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
+            user.RefreshTokenExpiryTime = DateTime.UtcNow.AddYears(1);
 
             await _userManager.UpdateAsync(user);
 
@@ -174,7 +174,7 @@ namespace finalSubmissionDotNet.Controllers
 
             string newRefreshToken = GenerateRefresh.GenerateRefreshToken();
             user.RefreshToken = newRefreshToken;
-            user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
+            user.RefreshTokenExpiryTime = DateTime.UtcNow.AddYears(1);
 
             await _userManager.UpdateAsync(user);
 
