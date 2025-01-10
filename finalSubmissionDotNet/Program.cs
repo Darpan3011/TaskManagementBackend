@@ -15,7 +15,7 @@ builder.Services.AddServiceCollection(builder.Configuration);
 
 // Build the application
 WebApplication app = builder.Build();
-app.UseCors("AllowLocalhost4200");
+app.UseCors("AllowAll");
 
 // Middleware setup
 app.UseExceptionMiddleware();

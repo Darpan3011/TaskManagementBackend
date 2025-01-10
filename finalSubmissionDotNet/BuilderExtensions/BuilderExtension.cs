@@ -23,9 +23,9 @@ namespace finalSubmissionDotNet.BuilderExtensions
             services.AddControllers();
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowLocalhost4200", policy =>
+                options.AddPolicy("AllowAll", policy =>
                 {
-                    policy.WithOrigins("http://localhost:4200")
+                    policy.WithOrigins("http://localhost:4200", "https://task-management-ui-rouge.vercel.app")
                           .AllowAnyMethod()
                           .AllowAnyHeader();
                 });

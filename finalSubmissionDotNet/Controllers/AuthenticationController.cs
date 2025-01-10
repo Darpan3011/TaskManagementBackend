@@ -139,6 +139,12 @@ namespace finalSubmissionDotNet.Controllers
             });
         }
 
+        /// <summary>
+        /// updated the token if expired using refresh token
+        /// </summary>
+        /// <param name="model">Refresh token</param>
+        /// <returns></returns>
+
         [HttpPost("[action]")]
         [TypeFilter(typeof(ModelValidationActionFilter))]
         public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenRequest model)
